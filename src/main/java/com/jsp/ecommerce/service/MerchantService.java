@@ -7,7 +7,7 @@ import com.jsp.ecommerce.dto.UserDto;
 
 import jakarta.servlet.http.HttpSession;
 
-public interface CustomerService {
+public interface MerchantService {
 
 	String register(UserDto userDto, Model model);
 

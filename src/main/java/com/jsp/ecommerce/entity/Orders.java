@@ -4,29 +4,38 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.jsp.ecommerce.dto.OrderStatus;
+import com.jsp.ecommerce.dto.PaymentStatus;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
-
-@Entity		
+@Entity
 @Getter
 @Setter
-public class Customer {
-	
+public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(nullable = false)
-	private String name;
-	@Column(unique = true, nullable = false)
-	private String email;
+	private Double totalAmount;
+	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-	private String password;
+	private PaymentStatus paymentStatus;
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private OrderStatus orderStatus;
 	@CreationTimestamp
-	private LocalDateTime createdTime;
+	private LocalDateTime creationTime;
+
+	@ManyToOne
+	private Customer customer;
 }

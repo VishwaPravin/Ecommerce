@@ -1,5 +1,7 @@
 package com.jsp.ecommerce.entity;
 
+import java.time.LocalDateTime;
+
 import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Column;
@@ -7,56 +9,26 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
 
 
 @Entity
+@Setter
+@Getter
 
 public class Merchant {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	@Column(nullable = false)
-	private String mname;
-	@Column(unique = true,nullable = false)
-	private String memail;
+	private String name;
+	@Column(unique = true, nullable = false)
+	private String email;
 	@Column(nullable = false)
-	private String mpassword;
+	private String password;
 	@CreationTimestamp
-	private String registered_at;
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getMname() {
-		return mname;
-	}
-	public void setMname(String mname) {
-		mname = mname;
-	}
-	public String getMemail() {
-		return memail;
-	}
-	public void setMemail(String memail) {
-		memail = memail;
-	}
-	public String getMpassword() {
-		return mpassword;
-	}
-	public void setMpassword(String mpassword) {
-		mpassword = mpassword;
-	}
-	public String getRegistered_at() {
-		return registered_at;
-	}
-	public void setRegistered_at(String registered_at) {
-		this.registered_at = registered_at;
-	}
-	
-	
-	
-
+	private LocalDateTime createdTime;
 }
