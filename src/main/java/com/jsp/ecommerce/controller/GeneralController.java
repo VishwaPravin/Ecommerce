@@ -26,4 +26,8 @@ public class GeneralController {
 			HttpSession session) {
 		return generalService.login(email, password, session);
 	}
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		return generalService.logout(session);
+	}
 }

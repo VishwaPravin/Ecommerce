@@ -3,14 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Merchant Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .message {
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .logout button {
+            background-color: #e74c3c;
+        }
+        .logout button:hover {
+            background-color: #c0392b;
+        }
+    </style>
 </head>
 <body>
     <div class="message">
-        <h2 style="color: green" th:text="${session.pass}"></h2>
-        <h2 style="color: red" th:text="${session.fail}"></h2>
+        <h2 style="color: #27ae60" th:text="${session.pass}"></h2>
+        <h2 style="color: #e74c3c" th:text="${session.fail}"></h2>
         <th:block th:text="${@messageRemover.remove()}"></th:block>
-      </div>
-    <h1>Merchant Home</h1>
+    </div>
+    <h1>Welcome to Merchant Dashboard</h1>
+    <div class="button-container">
+        <a href=""><button>Manage Profile</button></a>
+        <a href="/merchant/add-product"><button>Add Product</button></a>
+        <a href="/merchant/manage-products"><button>Manage Products</button></a>
+        <a href="/logout" class="logout"><button>Logout</button></a>
+    </div>
 </body>
 </html>

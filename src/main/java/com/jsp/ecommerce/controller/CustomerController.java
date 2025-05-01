@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jsp.ecommerce.dto.UserDto;
+import com.jsp.ecommerce.entity.Customer;
 import com.jsp.ecommerce.service.CustomerService;
 
 import jakarta.servlet.http.HttpSession;
@@ -43,8 +44,8 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/home")
-	public String loadHome() {
-		return "customer-home.html";
+	public String loadHome(HttpSession session) {
+		return customerService.loadHome(session);
 	}
 
 }

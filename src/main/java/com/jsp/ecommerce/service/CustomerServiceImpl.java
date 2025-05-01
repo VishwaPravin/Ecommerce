@@ -77,4 +77,16 @@ public class CustomerServiceImpl implements CustomerService {
 			return "redirect:/customer/otp";
 		}
 	}
+
+	@Override
+	public String loadHome(HttpSession session) {
+		Customer customer=(Customer) session.getAttribute("customer");
+		if(customer!=null) {
+		
+		return "customer-home.html";
+		}else {
+			session.setAttribute("fail", "Invalid  Session, Login to access");
+			return "redirect:/login";
+		}
+	}
 }
